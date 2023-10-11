@@ -1,40 +1,20 @@
-// backend/routes/index.js
-const express = require('express');
-const router = express.Router();
-const apiRouter = require('./api');
+// backend/routes/api/index.js
+const router = require('express').Router();
+const sessionRouter = require('./session.js');
+const usersRouter = require('./users.js');
+const { restoreUser } = require("../../utils/auth.js");
 
-router.use('/api', apiRouter);
+// Connect restoreUser middleware to the API router
+  // If current user session is valid, set req.user to the user in the database
+  // If current user session is not valid, set req.user to null
+router.use(restoreUser);
 
-// Static routes
-// Serve React build files in production
-if (process.env.NODE_ENV === 'production') {
-  const path = require('path');
-  // Serve the frontend's index.html file at the root route
-  router.get('/', (req, res) => {
-    res.cookie('XSRF-TOKEN', req.csrfToken());
-    res.sendFile(
-      path.resolve(__dirname, '../../frontend', 'build', 'index.html')
-    );
-  });
+router.use('/session', sessionRouter);
 
-  // Serve the static assets in the frontend's build folder
-  router.use(express.static(path.resolve("../frontend/build")));
+router.use('/users', usersRouter);
 
-  // Serve the frontend's index.html file at all other routes NOT starting with /api
-  router.get(/^(?!\/?api).*/, (req, res) => {
-    res.cookie('XSRF-TOKEN', req.csrfToken());
-    res.sendFile(
-      path.resolve(__dirname, '../../frontend', 'build', 'index.html')
-    );
-  });
-}
-
-// Add a XSRF-TOKEN cookie in development
-if (process.env.NODE_ENV !== 'production') {
-  router.get('/api/csrf/restore', (req, res) => {
-    res.cookie('XSRF-TOKEN', req.csrfToken());
-    res.status(201).json({});
-  });
-}
+router.post('/test', (req, res) => {
+  res.json({ requestBody: req.body });
+});
 
 module.exports = router;
