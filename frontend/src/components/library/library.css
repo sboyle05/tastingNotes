@@ -1,0 +1,49 @@
+.libraryContainer{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  flex: 1 0 auto;
+}
+.libraryNotes{
+  display: flex;
+  flex-direction: column;
+  max-width: 600px;
+  align-items: center;
+  background-color: rgba(108, 13, 30, 0.853);
+  border-radius: 15px;
+  padding: 20px;
+  margin-top: 20px;
+  color: #FAE5D3;
+  font-family: 'Poppins', sans-serif;
+}
+
+.tastingNoteSection{
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.libraryNotes ul{
+  list-style-type: none;
+  color: #FAE5D3;
+  margin: 0;
+  padding: 0;
+}
+
+.libraryNotes li{
+  border: 2px solid #528b37;
+  margin: 5px;
+  padding: 15px;
+}
+.libraryNotes a{
+  text-decoration: none !important;
+  color: #FAE5D3;
+  margin: 0;
+  padding: 0;
+}
+
+.libraryMSG{
+  font-size: 14px;
+
+}

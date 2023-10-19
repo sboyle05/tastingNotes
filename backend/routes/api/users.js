@@ -39,9 +39,10 @@ const validateSignup = [
 
 // Sign up
 router.post(
-    '',
-    validateSignup,
-    async (req, res) => {
+  '',
+  validateSignup,
+  async (req, res) => {
+    try {
       const { email, password, username, firstName, lastName } = req.body;
       const hashedPassword = bcrypt.hashSync(password);
       const user = await User.create({ email, username, hashedPassword, firstName, lastName });
@@ -55,11 +56,22 @@ router.post(
       };
 
       await setTokenCookie(res, safeUser);
-
       return res.json({
         user: safeUser
       });
-    }
-  );
+    } catch (err) {
+      if (err.name === 'SequelizeUniqueConstraintError') {
+          const errorMessages = {};
+          err.errors.forEach(({ message, path }) => {
+              errorMessages[path] = message;
+          });
+          return res.status(400).json(errorMessages);
+      } else if (err.name === 'ValidationError') {
+          return res.status(400).json(err.errors);
+      }
+      return res.status(500).json({ message: 'Internal server error' });
+  }
+  }
+);
 
 module.exports = router;

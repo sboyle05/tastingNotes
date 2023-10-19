@@ -1,0 +1,63 @@
+body, html, #root {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+body .welcomeContainer {
+  display: flex;
+  flex-direction: column;
+  flex: 1 0 auto;
+  /* padding: 20px; */
+  margin-right: 30px;
+  margin-left: 30px;
+  align-items: center;
+  justify-content: center !important;
+  background-color: rgba(108, 13, 30, 0.85);
+  margin-top: 25px;
+  border-radius: 15px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  min-width: 75vw;
+  font-family: 'Poppins', sans-serif;
+  color: #FAE5D3;
+
+}
+#welcomeTitle{
+  margin-bottom: 0;
+  margin-top: 20px;
+  /* padding: 8px 16px; */
+  background-color: transparent;
+  font-weight: 700;
+  text-align: center;
+  font-size: 40px;
+}
+#welcomeHistory {
+  margin-bottom: 0;
+  margin-top: 20px;
+  /* padding: 8px 16px; */
+  background-color: transparent;
+  font-weight: 600;
+  text-align: center;
+}
+
+.welcomeText1, .welcomeText2, .welcomeTextTitle {
+  margin-bottom: 0;
+  padding-left: 10px;
+  padding-right: 10px;
+  background-color: transparent;
+  text-align: center;
+}
+.welcomeTextTitle{
+  margin-top: 5px;
+}
+.welcomeText2{
+  margin-bottom: 5px;
+  margin-top: 5px;
+}
+.welcomeText3{
+  padding-bottom: 20px;
+  margin-top: 5px;
+}

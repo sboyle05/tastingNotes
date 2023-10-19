@@ -3,8 +3,6 @@ const {
   Model
 } = require('sequelize');
 
-const User = require('./user');
-
 module.exports = (sequelize, DataTypes) => {
   class TastingNote extends Model {
     /**
@@ -14,11 +12,11 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
-      TastingNote.belongsTo(User, {
+      TastingNote.belongsTo(models.User, {
         foreignKey: 'userId',
         onDelete: 'CASCADE',
         hooks: true
-       });
+    });
     }
   }
   TastingNote.init({

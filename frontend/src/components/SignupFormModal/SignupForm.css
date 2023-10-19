@@ -1,0 +1,68 @@
+.signUpFormContainer {
+	max-width: 400px;
+	min-width: 200px;
+	width: 30vh;
+	height: auto;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	background-color:  #3B2E28;
+	color: #FAE5D3;
+	border: 1px solid whitesmoke;
+	box-shadow: 2px 2px 5px whitesmoke;
+	font-family: 'Poppins', sans-serif;
+	padding: 20px;
+	position: absolute;
+	top: 40%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+}
+
+.signUpFormContainer label {
+	margin-right: 10px;
+}
+
+#emailId,
+#userNameId,
+#passwordId,
+#confirmPasswordId,
+#firstName,
+#lastName {
+	width: 100%;
+	max-width: 300px;
+	min-width: 100px;
+}
+
+#signUpButton {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	background-color: #528b37 ;
+	font-size: 14px;
+	font-family: 'Oxygen', sans-serif;
+	color: white;
+	border: 1px solid black;
+	border-radius: 5px;
+	box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+	transition: all 0.3s ease;
+	margin-top: 10px;
+	width: 90px;
+	height: 25px;
+
+}
+#signUpButton:hover{
+	background-color: #005a99;
+	box-shadow: 0 6px 8px rgba(0, 0, 0, 0.1);
+	transform: translateY(-2px);
+}
+#signUpButton:active{
+	background-color: #004d80;
+	transform: translateY(1px);
+	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.signUpButContainer {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
