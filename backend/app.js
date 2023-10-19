@@ -9,9 +9,9 @@ require('dotenv').config();
 
 const { environment } = require('./config');
 const isProduction = environment === 'production';
-const { ValidationError } = require('sequelize');
-
+const routes = require('./routes');
 const app = express();
+const { ValidationError } = require('sequelize');
 
 app.use(morgan('dev'));
 
@@ -42,7 +42,7 @@ app.use(
   })
 );
 
-const routes = require('./routes');
+
 app.use(routes); // Connect all the routes
 
 // Catch unhandled requests and forward to error handler.
