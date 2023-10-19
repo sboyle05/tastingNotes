@@ -14,7 +14,6 @@ module.exports = (sequelize, DataTypes) => {
       // define association here
       TastingNote.belongsTo(models.User, {
         foreignKey: 'userId',
-        onDelete: 'CASCADE',
         hooks: true
     });
     }

@@ -130,7 +130,7 @@ export const get_Tasting_Note = () => async (dispatch) => {
 
 export const delete_Tasting_Note = (tastingNoteId) => async (dispatch) => {
 	try {
-		await csrfFetch(`/api/recipebox/${tastingNoteId}/`, {
+		await csrfFetch(`/api/tastingNotes/${tastingNoteId}/`, {
 			method: 'DELETE',
 		});
 		dispatch(deleteTastingNote(tastingNoteId));
