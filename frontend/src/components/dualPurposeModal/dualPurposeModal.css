@@ -1,0 +1,43 @@
+
+    .dualPurposeContainer{
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        background-color:#3B2E28;
+        border: 1px solid whitesmoke;
+        box-shadow: 2px 2px 5px rgba(255, 255, 255, 0.3);
+        padding: 30px;
+        border-radius: 10px;
+        z-index: 1000;
+
+    }
+
+    .dpLoginButton{
+        margin-right: 10px;
+    }
+
+    .dpLoginButton, .dpSignUpButton {
+    background-color: #528b37 ;
+    height: 30px;
+    width: 120px;
+    font-size: 16px;
+    font-family: 'Oxygen', sans-serif;
+    color: white;
+    border: 1px solid white;
+    border-radius: 5px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    }
+
+    .dpLoginButton:hover, .dpSignUpButton:hover {
+    background-color: #546A4A ;
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.1);
+    transform: translateY(-2px);
+    }
+
+    .dpLoginButton:active, .dpSignUpButton:active {
+    background-color: #546A4A ;
+    transform: translateY(1px);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }

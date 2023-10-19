@@ -1,0 +1,62 @@
+
+body {
+	overflow-y: scroll !important;
+}
+
+#userIcon {
+	background-color: none;
+	width: 3vh;
+	height: 3vh;
+	color: whitesmoke;
+}
+
+.loginButton,
+.signUpButton {
+	background-color: #528b37 !important;
+	margin-right: 5px;
+	font-size: 14px;
+	font-family: 'Oxygen', sans-serif;
+	color: white;
+	border: 1px solid black;
+	border-radius: 5px;
+	box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+	transition: all 0.3s ease;
+
+}
+
+.loginButton:hover,
+.signUpButton:hover {
+	background-color: #546A4A;
+	box-shadow: 0 6px 8px rgba(0, 0, 0, 0.1);
+	transform: translateY(-2px);
+}
+
+.loginButton:active,
+.signUpButton:active {
+	background-color: #528b37;
+	transform: translateY(1px);
+	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+#logOutButton {
+	background-color: #546A4A;
+	font-family: 'Oxygen', sans-serif;
+}
+
+/* .modalContent {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	background-color: white;
+	padding: 20px;
+	outline: 'none';
+	width: 400px;
+	min-height: 300px;
+} */
+.css-sghohy-MuiButtonBase-root-MuiButton-root{
+	background-color: #528b37  !important;
+}
+.css-zcbmsk-MuiButtonBase-root-MuiButton-root{
+	background-color: #528b37  !important;
+}

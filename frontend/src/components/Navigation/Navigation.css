@@ -1,0 +1,80 @@
+body,
+html {
+	margin: 0;
+	padding: 0;
+}
+
+/* .profile-dropdown {
+	position: absolute;
+} */
+
+.hidden {
+	display: none;
+}
+
+.navigationContainer button {
+	cursor: pointer;
+}
+
+.navigationContainer {
+	display: flex;
+	align-items: center;
+	background-color: #3B2E28;
+	border-bottom: 2px solid whitesmoke;
+	align-items: center;
+
+	color: whitesmoke;
+	font-family: 'Oxygen', sans-serif;
+	/* padding-left: 10vh; */
+	justify-content: space-between;
+	/* width: 100vh; */
+	height: 75px;
+	flex-grow: 1 0;
+}
+
+
+
+.navButtonContainer {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	color: whitesmoke;
+	/* margin-right: 2vh;
+	margin-top: 2vh; */
+	flex-grow: 1;
+}
+
+.navList {
+	color: whitesmoke;
+	list-style-type: none;
+	display: flex;
+	/* flex-direction: row; */
+	align-items: center;
+	width: 100%;
+	justify-content: space-between;
+}
+
+.navButtonContainer a {
+	text-decoration: none;
+	color: whitesmoke;
+	font-family: 'Oxygen', sans-serif;
+	font-size: 18px;
+	margin-right: 2vh;
+}
+
+.navButtonContainer li {
+	display: flex;
+	text-decoration: none;
+	color: whitesmoke;
+	font-family: 'Oxygen', sans-serif;
+	font-size: 18px;
+	margin-right: 2vh;
+	cursor: pointer;
+}
+.navButtonContainer span {
+	text-decoration: none;
+	color: whitesmoke;
+	font-family: 'Oxygen', sans-serif;
+	font-size: 18px;
+	margin-right: 2vh;
+}

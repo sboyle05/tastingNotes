@@ -1,0 +1,18 @@
+
+body,
+html, :root {
+	margin: 0;
+	padding: 0;
+  min-height: 100vh;
+  min-width: 100%;
+}
+
+
+.appBackground {
+  background-image: url('https://d1jca6dx52tygx.cloudfront.net/barrels.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+  min-height: 100vh;
+  box-sizing: border-box;
+}
