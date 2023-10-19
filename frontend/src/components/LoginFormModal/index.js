@@ -12,26 +12,25 @@ function LoginFormModal() {
 	const { closeModal } = useModal();
 
 	const handleSubmit = async (e) => {
-		e.preventDefault();
-		const data = await dispatch(login({credential, password}));
-		if (data) {
-			setErrors([
-				'Invalid Credentials, please check your email/password and try again.',
-			]);
-		} else {
-			closeModal();
-		}
-	};
+    e.preventDefault();
+    let isMounted = true;
 
-	const loginDemo = async (e) => {
-		e.preventDefault();
-		const data = await dispatch(login('demo@aa.io', 'password'));
-		if (data) {
-			setErrors(data);
-		} else {
-			closeModal();
-		}
-	};
+    const data = await dispatch(login({credential, password}));
+
+    if (isMounted) {
+        if (data) {
+            setErrors([
+                'Invalid Credentials, please check your email/password and try again.',
+            ]);
+        } else {
+            closeModal();
+        }
+    }
+
+    return () => isMounted = false; // Cleanup function
+};
+
+
 	return (
 		<>
 			<section className='logincontainer'>
@@ -66,11 +65,6 @@ function LoginFormModal() {
 						<section className='loginSubmitBut'>
 							<button className='loginSubmit' type='submit'>
 								Log In
-							</button>
-						</section>
-						<section className='demoUserSubmitBut'>
-							<button className='demo-user' onClick={loginDemo}>
-								Log In as Demo User
 							</button>
 						</section>
 					</section>

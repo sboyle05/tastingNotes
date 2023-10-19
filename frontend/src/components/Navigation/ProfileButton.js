@@ -27,11 +27,14 @@ function ProfileButton({ user }) {
 	const handleClose = () => setAnchorEl(null);
 
 	const handleLogout = (e) => {
-		e.preventDefault();
-		dispatch(logout());
-		history.push('/');
-		handleClose();
-	};
+    e.preventDefault();
+    handleModal('login', false);
+    handleModal('signup', false);
+
+    dispatch(logout());
+    history.push('/');
+    handleClose();
+};
 
 	return (
   <section>
