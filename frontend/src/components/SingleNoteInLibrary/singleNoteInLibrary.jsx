@@ -62,14 +62,14 @@ const handleDelete = () => {
                 onChange={handleInputChange}
                 className='noteTextArea'
             />
-            <button onClick={handleSave}>Save</button>
+            <button id='saveTastingNote'onClick={handleSave}>Save</button>
         </>
     ) : (
         <>
             <h1>{currentTastingNote.name}</h1>
             <p>{currentTastingNote.text}</p>
-            <button onClick={() => setIsEditing(true)}>Edit</button>
-            <button onClick={handleDelete}>Delete</button>
+            <button id='editTastingNote' onClick={() => setIsEditing(true)}>Edit</button>
+            <button id='deleteTastingNote' onClick={handleDelete}>Delete</button>
         </>
     )}
 </section>

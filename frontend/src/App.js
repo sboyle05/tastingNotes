@@ -9,6 +9,7 @@ import Create from './components/createTastingNote/create';
 import SingleNote from './components/singleTastingNote/singleNote';
 import Library from './components/library/library';
 import SingleNoteInLibrary from './components/SingleNoteInLibrary/singleNoteInLibrary';
+import Faq from './components/FAQ/faq';
 
 function App() {
 	const dispatch = useDispatch();
@@ -39,6 +40,9 @@ function App() {
 						<Route path='/library'>
 							<Library/>
 							</Route>
+						<Route path='/faq'>
+							<Faq/>
+						</Route>
 					</Switch>
 					)}
 				</div>

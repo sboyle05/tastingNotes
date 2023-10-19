@@ -265,9 +265,7 @@ const Create = () => {
 										<option value='4'>4 Sentences</option>
 										<option value='5'>5 Sentences</option>
 										<option value='6'>6 Sentences</option>
-										<option value='7'>7 Sentences</option>
-										<option value='8'>8 Sentences</option>
-										<option value='9'>9 Sentences</option>
+
 									</select>
 								</label>
 
