@@ -18,7 +18,7 @@ function LoginFormModal() {
     const data = await dispatch(login({credential, password}));
 
     if (isMounted) {
-        if (data) {
+        if (data.errors) {
             setErrors([
                 'Invalid Credentials, please check your email/password and try again.',
             ]);

@@ -12,10 +12,6 @@ html {
 	display: none;
 }
 
-.navigationContainer button {
-	cursor: pointer;
-}
-
 .navigationContainer {
 	display: flex;
 	align-items: center;
@@ -81,8 +77,6 @@ html {
 	color: whitesmoke;
 	font-family: 'Oxygen', sans-serif;
 	font-size: 18px;
-	margin-right: 2vh;
-	cursor: pointer;
 }
 .navButtonContainer span {
 	text-decoration: none;
