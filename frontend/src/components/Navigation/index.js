@@ -36,7 +36,7 @@ function Navigation({ isLoaded }) {
 						</li>
 						<li>
 							<NavLink exact to='/create'>
-								Create TastingNote
+								Create
 							</NavLink>
 						</li>
 						<li>
