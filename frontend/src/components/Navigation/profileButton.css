@@ -9,11 +9,43 @@ body {
 	height: 3vh;
 	color: whitesmoke;
 }
+.profile-menu {
+	display: none;
+	position: absolute;
+	top: 100%;
+	right: 0;
+	width: 250px;
+	border: 1px solid #ccc;
+	background-color: #fff;
+	list-style-type: none;
+	padding: 0;
+	z-index: 10;
+	box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+}
+.profile-menu.show-menu {
+	background-color: #764608;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	padding: 10px;
+	border-radius: 20px;
 
+
+}
+.profile-menu li {
+	padding: 8px 16px;
+	margin: 0;
+	overflow-wrap: break-word;
+	word-break: break-all;
+	white-space: normal;
+}
+.profile-menu li button {
+	cursor: pointer;
+}
 .loginButton,
 .signUpButton {
 	background-color: #528b37 !important;
-	margin-right: 5px;
+	margin-bottom: 5px;
 	font-size: 14px;
 	font-family: 'Oxygen', sans-serif;
 	color: white;
@@ -21,7 +53,7 @@ body {
 	border-radius: 5px;
 	box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 	transition: all 0.3s ease;
-
+	width: 100px;
 }
 
 .loginButton:hover,
@@ -39,24 +71,14 @@ body {
 }
 
 #logOutButton {
-	background-color: #546A4A;
+	background-color: #528b37 !important;
+	margin-bottom: 5px;
+	font-size: 14px;
 	font-family: 'Oxygen', sans-serif;
-}
-
-/* .modalContent {
-	position: absolute;
-	top: 50%;
-	left: 50%;
-	transform: translate(-50%, -50%);
-	background-color: white;
-	padding: 20px;
-	outline: 'none';
-	width: 400px;
-	min-height: 300px;
-} */
-.css-sghohy-MuiButtonBase-root-MuiButton-root{
-	background-color: #528b37  !important;
-}
-.css-zcbmsk-MuiButtonBase-root-MuiButton-root{
-	background-color: #528b37  !important;
+	color: white;
+	border: 1px solid black;
+	border-radius: 5px;
+	box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+	transition: all 0.3s ease;
+	width: 100px;
 }

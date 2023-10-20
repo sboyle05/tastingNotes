@@ -1,86 +1,89 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import { logout } from '../../store/session';
 import LoginFormModal from '../LoginFormModal';
 import SignupFormModal from '../SignupFormModal';
 import './profileButton.css';
-import Menu from '@mui/material/Menu';
-import MenuItem from '@mui/material/MenuItem';
-import IconButton from '@mui/material/IconButton';
 import AccountBoxIcon from '@mui/icons-material/AccountBox';
-import Modal from '@mui/material/Modal';
-import Button from '@mui/material/Button';
-
+import OpenModalButton from '../OpenModalButton';
 
 function ProfileButton({ user }) {
 	const dispatch = useDispatch();
+	const [showMenu, setShowMenu] = useState(false);
+	const ulRef = useRef();
 	const history = useHistory();
-	const [anchorEl, setAnchorEl] = useState(null);
-	const [modals, setModals] = useState({ login: false, signup: false });
 
-	const handleModal = (type, value) => {
-		setModals((prev) => ({ ...prev, [type]: value }));
+	const openMenu = () => {
+		if (showMenu) return;
+		setShowMenu(true);
 	};
 
-	const handleClick = (event) => setAnchorEl(event.currentTarget);
-	const handleClose = () => setAnchorEl(null);
+	useEffect(() => {
+		if (!showMenu) return;
+
+		const closeMenu = (e) => {
+			if (!ulRef.current.contains(e.target)) {
+				setShowMenu(false);
+			}
+		};
+
+		document.addEventListener('click', closeMenu);
+
+		return () => document.removeEventListener('click', closeMenu);
+	}, [showMenu]);
 
 	const handleLogout = (e) => {
-    e.preventDefault();
-    handleModal('login', false);
-    handleModal('signup', false);
+		e.preventDefault();
+		dispatch(logout());
+		history.push('/');
+	};
 
-    dispatch(logout());
-    history.push('/');
-    handleClose();
-};
+  const ulClassName =
+  'profile-menu' +
+  (user ? ' logged-in' : ' logged-out') +
+  (showMenu ? ' show-menu' : '');
+const closeMenu = () => setShowMenu(false);
 
-	return (
-  <section>
-    <IconButton onClick={handleClick}>
-      <AccountBoxIcon id='userIcon' />
-    </IconButton>
-    <Menu
-      anchorEl={anchorEl}
-      keepMounted
-      open={Boolean(anchorEl)}
-      onClose={handleClose}
-    >
-      {user ? (
-        [
-          <MenuItem key="username">{user?.username || 'Guest'}</MenuItem>,
-          <MenuItem key="email">{user?.email}</MenuItem>,
-          <MenuItem key="logout" onClick={handleLogout}>Log Out</MenuItem>,
-        ]
-      ) : (
-        [
-          <MenuItem key="login">
-            <Button variant='contained' color='primary' onClick={() => handleModal('login', true)}>
-              Log In
-            </Button>
-            <Modal open={modals.login} onClose={() => handleModal('login', false)}>
-              <section className='modalContent'>
-                <LoginFormModal open={modals.login} onClose={() => handleModal('login', false)} />
-              </section>
-            </Modal>
-          </MenuItem>,
-          <MenuItem key="signup">
-            <Button variant='contained' color='secondary' onClick={() => handleModal('signup', true)}>
-              Sign Up
-            </Button>
-            <Modal open={modals.signup} onClose={() => handleModal('signup', false)}>
-              <section className='modalContent'>
-                <SignupFormModal open={modals.signup} onClose={() => handleModal('signup', false)} />
-              </section>
-            </Modal>
-          </MenuItem>
-        ]
-      )}
-    </Menu>
-  </section>
+
+return (
+  <>
+      <section style={{ position: 'relative' }}> {/* Relative positioning to contain the absolute positioned dropdown */}
+          <span onClick={openMenu}>
+              <AccountBoxIcon id='userIcon'/>
+          </span>
+          <ul className={ulClassName} ref={ulRef}>
+              {user ? (
+                  <>
+                      <li>{user.username}</li>
+                      <li>{user.email}</li>
+                      <li>
+                          <button id='logOutButton' onClick={handleLogout}>
+                              Log Out
+                          </button>
+                      </li>
+                  </>
+              ) : (
+                  <>
+                      <OpenModalButton
+                          buttonText='Log In'
+                          className='loginButton'
+                          onButtonClick={closeMenu}
+                          modalComponent={<LoginFormModal />}
+                      />
+
+                      <OpenModalButton
+                          buttonText='Sign Up'
+                          className='signUpButton'
+                          onButtonClick={closeMenu}
+                          modalComponent={<SignupFormModal />}
+                      />
+                  </>
+              )}
+          </ul>
+      </section>
+  </>
 );
-
 }
 
 export default ProfileButton;
