@@ -1,11 +1,12 @@
 body, html {
   margin: 0;
   padding: 0;
+  overflow-y: auto;
   height: 100%;
 }
 
 .backgroundWrapper {
-  position: fixed;
+  /* position: fixed; */
   top: 0;
   right: 0;
   bottom: 0;
@@ -19,8 +20,9 @@ body, html {
 }
 
 .appBackground {
+  position: relative;
+  z-index: 1;
   min-height: 100vh;
-  height: auto;
-  box-sizing: border-box;
-  padding-top: 60px;
+  /* padding-top: 65px; */
+  overflow-y: auto;
 }

@@ -30,8 +30,8 @@ html {
 	width: 100vw;
 	height: 75px;
 	flex-grow: 1 0;
-
-	overflow: hidden;
+/*
+	overflow: hidden; */
 }
 .logoContainer{
 	display: flex;
