@@ -3,7 +3,7 @@ import { NavLink, useHistory } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import ProfileButton from './ProfileButton';
 import DualPurposeModal from '../dualPurposeModal';
-
+import glass from '../../assets/glass.png'
 import './Navigation.css';
 import { useModal } from '../../context/Modal';
 
@@ -28,7 +28,10 @@ function Navigation({ isLoaded }) {
 					<ul className='navList'>
 						<li>
 							<NavLink exact to='/'>
-								Home
+								<div className='logoContainer'>
+								<span>Tasting <br/>Notes</span>
+								<img id='logo' src={glass} alt='logo'/>
+								</div>
 							</NavLink>
 						</li>
 						<li>
