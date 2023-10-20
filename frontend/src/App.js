@@ -22,6 +22,7 @@ function App() {
 		<>
 
 				<Navigation isLoaded={isLoaded} />
+				<div className='backgroundWrapper'>
 				<div className='appBackground'>
 					{isLoaded && (
 				<Switch>
@@ -45,6 +46,7 @@ function App() {
 						</Route>
 					</Switch>
 					)}
+				</div>
 				</div>
 
 		</>
