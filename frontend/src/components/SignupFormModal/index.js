@@ -14,11 +14,14 @@ function SignupFormModal() {
 	const [confirmPassword, setConfirmPassword] = useState('');
 	const [errors, setErrors] = useState([]);
 	const { closeModal } = useModal();
+	const formattedEmail = email.toLowerCase();
+	const formattedUsername = username.toLowerCase();
+
 
 	const handleSubmit = async (e) => {
     e.preventDefault();
     if (password === confirmPassword) {
-        const data = await dispatch(signUp({firstName, lastName, username, email, password}));
+        const data = await dispatch(signUp({firstName, lastName, username: formattedUsername, email: formattedEmail, password}));
 
         if (data.errors.length > 0) {
             setErrors(data.errors);

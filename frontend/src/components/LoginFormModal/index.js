@@ -10,26 +10,21 @@ function LoginFormModal() {
 	const [password, setPassword] = useState('');
 	const [errors, setErrors] = useState([]);
 	const { closeModal } = useModal();
-
+	const formattedCredential = credential.toLowerCase();
 	const handleSubmit = async (e) => {
     e.preventDefault();
-    let isMounted = true;
 
-    const data = await dispatch(login({credential, password}));
+    const data = await dispatch(login({credential: formattedCredential, password}));
 
-    if (isMounted) {
-        if (data.errors) {
-            setErrors([
-                'Invalid Credentials, please check your email/password and try again.',
-            ]);
-        } else {
-            closeModal();
-        }
+
+    if (data?.errors){
+			const errorMessages = Object.values(data.errors);
+    setErrors(errorMessages);
+
+    } else {
+        closeModal();
     }
-
-    return () => isMounted = false; // Cleanup function
 };
-
 
 	return (
 		<>
@@ -42,7 +37,7 @@ function LoginFormModal() {
 						))}
 					</ul>
 					<section className='loginLabelInput'>
-						<label>Email</label>
+						<label>Email or Username</label>
 						<input
 							type='text'
 							id='emailInput'
