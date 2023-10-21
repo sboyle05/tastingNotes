@@ -76,13 +76,13 @@ const Create = () => {
 
 	const handleSubmit = async (e) => {
 		e.preventDefault();
+		resetViewportScale();
 		const prompt = generatePrompt(formData);
 		dispatch(clearTastingNote());
 		dispatch(generateNoteFromAPI(prompt, formData.name));
 
 		history.push('/singleNote');
 
-		resetViewportScale();
 	};
 
 	const resetViewportScale = () => {
