@@ -86,13 +86,8 @@ const Create = () => {
 	};
 
 	const resetViewportScale = () => {
-    let viewport = document.querySelector("meta[name=viewport]");
-    viewport.parentNode.removeChild(viewport);
-
-    viewport = document.createElement('meta');
-    viewport.name = "viewport";
+		let viewport = document.querySelector("meta[name=viewport]");
     viewport.content = "initial-scale=1, maximum-scale=1, user-scalable=no";
-    document.getElementsByTagName('head')[0].appendChild(viewport);
 };
 
 	return (
