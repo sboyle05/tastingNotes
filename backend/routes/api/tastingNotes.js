@@ -46,7 +46,7 @@ router.post('/generate-note', async (req, res) => {
         const responseData = openaiResponse.data;
 
         // Log the OpenAI response to debug
-        console.log("OpenAI API Response:", responseData);
+        // console.log("OpenAI API Response:", responseData);
 
         if (responseData && responseData.choices && responseData.choices.length > 0) {
             const tastingNote = extractTastingNote(responseData, name);

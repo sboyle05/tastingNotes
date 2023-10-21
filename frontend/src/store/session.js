@@ -16,21 +16,51 @@ const removeUser = () => {
   };
 };
 
+
 export const login = (user) => async (dispatch) => {
-  const { credential, password } = user;
-  const response = await csrfFetch("/api/session", {
-    method: "POST",
-    body: JSON.stringify({
-      credential,
-      password,
-    }),
-  });
-  const data = await response.json();
+  try {
 
-  dispatch(setUser(data.user));
-  return data;
+
+    const { credential, password } = user;
+
+    const response = await csrfFetch("/api/session", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        credential,
+        password,
+      }),
+    });
+
+
+    // Convert the response to JSON immediately after receiving it
+    const responseData = await response.json();
+
+    if (!response.ok) {
+      if (responseData.errors) {
+          console.error("Login failed with errors:", responseData.errors);
+          return { errors: responseData.errors };
+      } else {
+          console.error("Other error occurred:", responseData);
+          return { errors: ["An unexpected error occurred."] };
+      }
+    } else {
+      dispatch(setUser(responseData.user));
+      return { user: responseData.user };
+    }
+  } catch (err) {
+    console.error("Error caught:", err);
+    if (err.status === 401) {
+      return { errors: ['Check your login information and try again'] };
+    } else {
+     return { errors: ['An unexpected error has occurred please try again'] };
+    }
+
+
+  }
 };
-
 
 export const signUp = (user) => async (dispatch) => {
   const { firstName, lastName, username, email, password} = user;
