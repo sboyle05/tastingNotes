@@ -1,6 +1,5 @@
 const express = require('express');
 const router = express.Router();
-const axios = require('axios');
 const { TastingNote } = require('../../db/models');
 const { OpenAI } = require("openai");
 
@@ -31,28 +30,22 @@ router.post('/generate-note', async (req, res) => {
     try {
         const { messages, name } = req.body;
 
-        const openaiResponse = await axios.post('https://api.openai.com/v1/chat/completions', {
-            model: 'gpt-3.5-turbo',
-            messages: [{ role: "user", content: messages[0].content }],
+        const completion = await openai.chat.completions.create({
+            model: "gpt-4o-mini",  // Using GPT-4o-mini model
+            messages: [
+                { role: "system", content: "You are a helpful assistant." },
+                { role: "user", content: messages[0].content }
+            ],
             temperature: 1.0,
             max_tokens: 500
-        }, {
-            headers: {
-                'Authorization': `Bearer ${process.env.OPENAI_API_KEY}`,
-                'Content-Type': 'application/json'
-            }
         });
 
-        const responseData = openaiResponse.data;
-
-        // Log the OpenAI response to debug
-        // console.log("OpenAI API Response:", responseData);
+        const responseData = completion;
 
         if (responseData && responseData.choices && responseData.choices.length > 0) {
             const tastingNote = extractTastingNote(responseData, name);
             res.json(tastingNote);
         } else if (responseData && responseData.error) {
-            // Handle OpenAI API error response
             throw new Error(responseData.error.message);
         } else {
             throw new Error('Unexpected response from OpenAI');
@@ -81,7 +74,6 @@ router.post('/', requireAuth, async (req, res) => {
     }
 });
 
-
 router.get('/', requireAuth, async (req, res) => {
     try {
         const userId = req.user.id;
@@ -92,7 +84,6 @@ router.get('/', requireAuth, async (req, res) => {
         res.status(500).json({ error: 'Failed to fetch tasting notes.' });
     }
 });
-
 
 router.put('/:tastingNoteId', requireAuth, async (req, res) => {
     try {

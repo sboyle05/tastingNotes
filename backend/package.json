@@ -32,7 +32,7 @@
     "jsonwebtoken": "^9.0.2",
     "morgan": "^1.10.0",
     "node-fetch": "^3.3.2",
-    "openai": "^4.12.3",
+    "openai": "^4.68.1",
     "per-env": "^1.0.2",
     "pg": "^8.11.3",
     "pg-hstore": "^2.3.4",
